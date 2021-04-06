@@ -17,8 +17,8 @@ import games.c4Solver as C4Solver
 from settings import charts_folder
 from keras.utils import plot_model
 
-ROWS = 4
-COLUMNS = 5
+ROWS = 6
+COLUMNS = 7
 gamma = 0.95
 n_step = 11
 isConv = True

@@ -14,7 +14,7 @@ FIFO = "games/c4solver67-pipe-in"
 FIFO_OUT = "games/c4solver67-pipe-out"
 FILE = "games/out.txt"
 LOCK = "games/lock"
-debug = False
+debug = True
 
 threadLock = threading.Lock()
 
@@ -35,7 +35,7 @@ def solve(game, rand):
     gameString = ""
     for i in game.toString():
         gameString += str(int(i) + 1)
-
+    print("solve", game.toString())
     if game.rows == 6 and game.columns == 7:
         moves = miniMax6X7Shell(gameString)  
     elif game.rows == 5 and game.columns == 6:
@@ -117,8 +117,10 @@ def miniMax6X7Shell(gameString):
 
 def miniMax6X7API(gameString):
     if debug: print("miniMax6X7API called")
+    print(str('http://connect4.gamesolver.org/solve?pos=' + str(gameString)))
     r = requests.get('http://connect4.gamesolver.org/solve?pos=' + str(gameString))
     data = yaml.safe_load(r.text)
+    print(data)
     scores = [-99 if i == 100 else i for i in data['score']]
     if debug: print(scores)
 

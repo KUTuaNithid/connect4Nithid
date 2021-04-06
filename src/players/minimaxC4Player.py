@@ -7,13 +7,13 @@ Created on Fri Jul 27 15:52:53 2018
 """
 from players.player import Player
 import games.c4Solver as C4Solver
+import games.c4Solver2 as C4Solver2
 import numpy as np
 
 class MinimaxC4Player(Player):
     
     def __init__(self, name, game, **kwargs):
         super().__init__(name, game, **kwargs)
-        
         self.solver = kwargs['solver'] if "solver" in kwargs else C4Solver
         self.rand = kwargs['rand'] if "rand" in kwargs else True
     
